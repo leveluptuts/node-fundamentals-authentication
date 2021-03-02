@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+
+    <h3>Register Form</h3>
+    <form id="register-form">
+      <input type="email" name="email" />
+      <input type="password" name="password" />
+      <button type="submit">Register</button>
+    </form>
+
+    <br />
+    <hr />
+    <br />
+
+    <h3>Login Form</h3>
+    <form id="login-form">
+      <input type="email" name="email" />
+      <input type="password" name="password" />
+      <button type="submit">Login</button>
+    </form>
+
+    <script>
+      ;(() => {
+        const registerForm = document.getElementById("register-form")
+        registerForm.addEventListener("submit", async (e) => {
+          e.preventDefault()
+          try {
+            const values = Object.values(registerForm).reduce((obj, field) => {
+              if (field.name) {
+                obj[field.name] = field.value
+              }
+              return obj
+            }, {})
+            const res = await fetch("/api/register", {
+              method: "POST",
+              body: JSON.stringify(values),
+              headers: { "Content-type": "application/json; charset=UTF-8" },
+            })
+          } catch (e) {
+            console.error(e)
+          }
+        })
+        // Find form element
+        const loginForm = document.getElementById("login-form")
+        // Wait for event
+        loginForm.addEventListener("submit", async (e) => {
+          e.preventDefault()
+          try {
+            // get form values
+            const values = Object.values(loginForm).reduce((obj, field) => {
+              if (field.name) {
+                obj[field.name] = field.value
+              }
+              return obj
+            }, {})
+            // Submit form
+            const res = await fetch("/api/authorize", {
+              method: "POST",
+              body: JSON.stringify(values),
+              headers: { "Content-type": "application/json; charset=UTF-8" },
+            })
+          } catch (e) {
+            console.error(e)
+          }
+        })
+      })()
+    </script>
+  </body>
+</html>

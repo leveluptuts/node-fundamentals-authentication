@@ -1,0 +1,12 @@
+Access Token
+* JWT
+* Contains all of the info someone needs to be logged
+* Says this user has access
+* Only available current session 
+
+
+Refresh Token
+* JWT
+* Only contains session id
+* Be used to generate new access token
+* Used to refresh the access token

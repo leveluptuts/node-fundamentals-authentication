@@ -1,0 +1,43 @@
+Encryption, 
+Allows you to use a key to obfuscate and retrieve data
+
+password
+
+password X key
+
+qbttxpse
+
+qbttxpse / key
+
+password
+
+
+
+Hashing
+A one way trip. Not meant to be reversed
+
+password
+password x hash function
+hashed data 
+
+md4, md5, sha
+Sha - security hashing algorithm
+sha-256
+
+
+Salt
+
+adds additional data (salt)
+
+passwordsalt
+passwordsalt x hash function
+creates a unique hash
+
+
+
+
+
+
+
+
+
